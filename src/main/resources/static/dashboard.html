@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventVerse | Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+
+<body class="dark">
+
+<!-- HEADER -->
+<header class="top-header">
+    <div class="header-left">
+        <div class="site-logo">
+            <div class="logo-icon">🪐</div>
+            <h1>Event<span>Verse</span></h1>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <button class="header-btn" onclick="openScanner()" id="scanBtn" style="display:none;">
+            📷 Scan QR
+        </button>
+        <button id="themeToggle">🌙</button>
+
+        <div class="profile-container">
+            <div class="profile-icon" onclick="toggleProfileMenu()">👤</div>
+            <div class="profile-menu" id="profileMenu">
+                <div onclick="selectRole('admin')">🛡️ Post event</div>
+                <div onclick="selectRole('student')">🎓 Scan QR</div>
+                <div onclick="goToMyAccount()">👤 My Account</div>
+                <div onclick="logout()">🚪 Logout</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+    <h2>Explore Events</h2>
+    <p>Discover, register, and participate in amazing campus events</p>
+</section>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+    <h3>📋 Post New Event</h3>
+
+    <select id="eventTheme">
+        <option value="">Select Theme</option>
+        <option value="cultural">Cultural</option>
+        <option value="technical">Technical</option>
+        <option value="non-technical">Non-Technical</option>
+        <option value="sports">Sports</option>
+        <option value="arts">Arts</option>
+        <option value="music">Music</option>
+        <option value="workshops">Workshops</option>
+        <option value="others">Others</option>
+    </select>
+
+    <input type="text" id="eventName" placeholder="Event Name">
+    <input type="text" id="eventVenue" placeholder="Venue (e.g. Main Auditorium)">
+    <textarea id="eventDesc" placeholder="Event Description"></textarea>
+
+    <div class="datetime-row">
+        <div class="datetime-group">
+            <label for="eventStartDate">Start Date & Time</label>
+            <input type="datetime-local" id="eventStartDate">
+        </div>
+        <div class="datetime-group">
+            <label for="eventEndDate">End Date & Time</label>
+            <input type="datetime-local" id="eventEndDate">
+        </div>
+    </div>
+
+    <div class="upload-group">
+        <label for="eventCertificate">🏅 Certificate Template</label>
+        <div class="file-upload-box" id="certUploadBox" onclick="document.getElementById('eventCertificate').click()">
+            <span class="upload-icon">📜</span>
+            <span class="upload-text">Click to upload certificate template</span>
+            <span class="upload-hint">JPG, PNG, PDF — Max 5MB</span>
+            <input type="file" id="eventCertificate" accept="image/*,.pdf" onchange="previewFile(this, 'certPreview', 'certUploadBox')" hidden>
+        </div>
+        <img id="certPreview" class="file-preview" style="display:none;">
+    </div>
+
+    <button onclick="postEvent()">Publish Event</button>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+    <div class="category-card cultural" onclick="goToCategory('cultural')">
+        <img src="https://indiachalk.com/wp-content/uploads/2021/09/00.-blog-feature-image-india-chalk-scaled.jpg" alt="Cultural">
+        <h2>Cultural</h2>
+    </div>
+
+    <div class="category-card technical" onclick="goToCategory('technical')">
+        <img src="https://i.ibb.co/h162qrR/technical-resources-twitter-post.jpg" alt="Technical">
+        <h2>Technical</h2>
+    </div>
+
+    <div class="category-card non-technical" onclick="goToCategory('non-technical')">
+        <img src="https://mathsclub-60038694178.development.catalystserverless.in/app/nontechnical.jpg" alt="Non-Technical">
+        <h2>Non-Technical</h2>
+    </div>
+
+    <div class="category-card sports" onclick="goToCategory('sports')">
+        <img src="https://www.neom.com/content/dam/neom/newsroom/neom-beach-games/nbg-cover.png" alt="Sports">
+        <h2>Sports</h2>
+    </div>
+
+    <div class="category-card arts" onclick="goToCategory('arts')">
+        <img src="https://d2fryjlmubyuuh.cloudfront.net/wp-content/uploads/2025/11/04095311/1.png" alt="Arts">
+        <h2>Arts</h2>
+    </div>
+
+    <div class="category-card music" onclick="goToCategory('music')">
+        <img src="https://deep-house.co.za/wp-content/uploads/2023/02/bec6dec5-6fce-4777-84d2-c7d14cc02d15-2048x1365.jpg" alt="Music">
+        <h2>Music</h2>
+    </div>
+
+    <div class="category-card workshops" onclick="goToCategory('workshops')">
+        <img src="https://img.freepik.com/premium-photo/workshop-event-meeting-business-event-training-developrer-seminars-management_327072-19905.jpg" alt="Workshops">
+        <h2>Workshops</h2>
+    </div>
+
+    <div class="category-card others" onclick="goToCategory('others')">
+        <img src="https://t3.ftcdn.net/jpg/07/33/50/26/360_F_733502690_GYuQrHyM4W7xxhRW0UPGrySJxJoRnNz4.jpg" alt="Others">
+        <h2>Others</h2>
+    </div>
+</section>
+
+<!-- QR SCANNER PANEL -->
+<div id="scannerPanel">
+    <div>
+        <h3>📷 Scan Event QR</h3>
+        <div id="reader" style="width:280px;margin:auto;border-radius:12px;overflow:hidden;"></div>
+        <br>
+        <button onclick="closeScanner()">Close Scanner</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="dashboard.js"></script>
+<script src="studentDashboard.js"></script>
+</body>
+</html>

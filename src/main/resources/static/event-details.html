@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventVerse | Event Details</title>
+    <link rel="stylesheet" href="event-details.css">
+</head>
+<body>
+
+<div class="details-container">
+    <div class="poster-section">
+        <img id="eventPoster" alt="Event Poster">
+    </div>
+
+    <div class="info-section">
+        <a href="javascript:history.back()" class="back-link">← Back to Events</a>
+        <h2 id="eventName"></h2>
+        <p>📝 <strong>Description:</strong> <span id="eventDesc"></span></p>
+        <p>📅 <strong>Date:</strong> <span id="eventDate"></span></p>
+        <p>🕐 <strong>Time:</strong> <span id="eventTime"></span></p>
+        <p>📍 <strong>Venue:</strong> <span id="eventVenue"></span></p>
+        <p>👤 <strong>Organizer:</strong> <span id="eventOrganizer"></span></p>
+        <p>💰 <strong>Fee:</strong> ₹<span id="eventFee"></span></p>
+        <button class="register-btn">Register Now</button>
+    </div>
+</div>
+
+<script src="event-details.js"></script>
+</body>
+</html>

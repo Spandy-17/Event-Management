@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventVerse | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+    <div class="site-logo">
+        <div class="logo-icon">🪐</div>
+        <h1>Event<span>Verse</span></h1>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="form-box" id="loginBox">
+        <h2>Welcome back</h2>
+
+        <input type="text" id="loginUsername" placeholder="Username" autocomplete="username">
+        <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password">
+
+        <p class="error" id="loginError"></p>
+
+        <button onclick="login()">Sign In</button>
+
+        <p class="switch">
+            Don't have an account?
+            <span onclick="showSignup()">Create one</span>
+        </p>
+    </div>
+
+    <!-- SIGNUP -->
+    <div class="form-box hidden" id="signupBox">
+        <h2>Create Account</h2>
+
+        <input type="text" id="signupUsername" placeholder="Username" autocomplete="username">
+        <select id="signupDepartment">
+            <option value="">Select Department</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+        </select>
+        <input type="password" id="signupPassword" placeholder="Password" autocomplete="new-password">
+        <input type="password" id="signupConfirmPassword" placeholder="Confirm Password" autocomplete="new-password">
+
+        <p class="info">Password must be at least 8 characters long</p>
+        <p class="error" id="signupError"></p>
+
+        <button onclick="signup()">Create Account</button>
+
+        <p class="switch">
+            Already have an account?
+            <span onclick="showLogin()">Sign in</span>
+        </p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

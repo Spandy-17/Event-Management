@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventVerse | My Account</title>
+    <link rel="stylesheet" href="my-account.css">
+</head>
+<body class="dark">
+
+<!-- HEADER -->
+<header class="top-header">
+    <div class="header-left">
+        <a href="dashboard.html" class="back-link">← Back</a>
+        <div class="site-logo">
+            <div class="logo-icon">🪐</div>
+            <h1>Event<span>Verse</span></h1>
+        </div>
+    </div>
+    <div class="header-right">
+        <button id="themeToggle">🌙</button>
+    </div>
+</header>
+
+<!-- PROFILE SECTION -->
+<section class="account-hero">
+    <div class="avatar-circle" id="avatarCircle">👤</div>
+    <h2 id="displayName">User</h2>
+    <p class="account-email" id="displayEmail">user@eventverse.com</p>
+    <div class="account-stats">
+        <div class="stat-box">
+            <span class="stat-num" id="statRegistered">0</span>
+            <span class="stat-label">Registered</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-num" id="statCompleted">0</span>
+            <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-num" id="statUpcoming">0</span>
+            <span class="stat-label">Upcoming</span>
+        </div>
+        <div class="stat-box">
+            <span class="stat-num" id="statOrganized">0</span>
+            <span class="stat-label">Organized</span>
+        </div>
+    </div>
+</section>
+
+<!-- TAB BUTTONS -->
+<section class="tab-section">
+    <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('registered')">📋 Registered Events</button>
+        <button class="tab-btn" onclick="switchTab('completed')">✅ Completed Events</button>
+        <button class="tab-btn" onclick="switchTab('organized')">🎯 Organized Events</button>
+    </div>
+
+    <div class="events-list" id="eventsListContainer">
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Loading your events...</p>
+        </div>
+    </div>
+</section>
+
+<script src="my-account.js"></script>
+</body>
+</html>
